@@ -21,4 +21,11 @@ go build -o main cmd/server/main.go
 evans -r repl --host localhost --port 50051
 ```
 
-![изображение](https://github.com/Concerts-Mate/Elastic-Service/assets/28489754/8597e166-4504-491a-ab67-cb0c88b1b606)
+```
+ package api
+ service CitySearch
+ call SearchByName
+ call SearchByCoords
+```
+
+#### calls in evans inputs args intercatively
