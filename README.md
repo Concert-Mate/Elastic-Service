@@ -1,8 +1,8 @@
 ## Конфигурация
 
-* Логин, пароль, хост от Эластики(ELASTIC_USER, ELASTIC_PASSWORD, ELASTICSEARCH_ADDRESS)
-* Порт gRPC сервера(PORT)
-* Дистанция в километрах поиска по координатам(ELASTIC_DISTANCE, по умолчанию 10км)
+* Логин, пароль, хост от Эластики(`ELASTIC_USER`, `ELASTIC_PASSWORD`, `ELASTICSEARCH_ADDRESS`)
+* Порт gRPC сервера(`PORT`)
+* Дистанция в километрах поиска по координатам(`ELASTIC_DISTANCE`, по умолчанию 10км)
 
 #### Все это можно посмотреть, изменить в env
 
