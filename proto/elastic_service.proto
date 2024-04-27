@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "./api";
+
+message Coords {
+  float lat = 1;
+  float lon = 2;
+}
+
+message City {
+  Coords coords = 1;
+  string district = 2;
+  string name = 3;
+  int32 population = 4;
+  string subject = 5;
+}
+
+message CitySearchNameResponse {
+  enum ResponseCode{
+    SUCCESS_NAME = 0;
+    FUZZY_NAME = 1;
+    EMPTY_NAME = 2;
+    INTERNAL_ERROR_NAME = 3;
+  };
+  ResponseCode code = 1;
+  repeated City options = 2;
+}
+
+message CitySearchCoordsResponse{
+  enum ResponseCode{
+    SUCCESS_COORDS = 0;
+    EMPTY_COORDS = 1;
+    INVALID_COORDS = 2;
+    INTERNAL_ERROR_COORDS = 3;
+  }
+  ResponseCode code = 1;
+  repeated City options = 2;
+}
+
+
+
+message CityNameRequest {
+  string name = 1;
+}
+
+message CoordsRequest {
+  float lat = 1;
+  float lon = 2;
+}
+
+
+service CitySearch {
+  rpc SearchByName (CityNameRequest) returns (CitySearchNameResponse);
+  rpc SearchByCoords (CoordsRequest) returns (CitySearchCoordsResponse);
+}
+
+
+
