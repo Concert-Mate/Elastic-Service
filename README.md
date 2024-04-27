@@ -1,8 +1,8 @@
 ## Конфигурация
 
 * Логин, пароль, хост от Эластики(ELASTIC_USER, ELASTIC_PASSWORD, ELASTICSEARCH_ADDRESS)
-* порт GRPC сервера(PORT)
-* дистанцию в километрах поиска по координатам(ELASTIC_DISTANCE, по умолчанию 10км)
+* Порт GRPC сервера(PORT)
+* Дистанция в километрах поиска по координатам(ELASTIC_DISTANCE, по умолчанию 10км)
 
 #### Все это можно посмотреть, изменить в env
 
@@ -38,9 +38,9 @@ go build -o main cmd/server/main.go
 ### Проверка что все работает
 
 Для проверки можно поставить [evans](https://github.com/ktr0731/evans/releases/tag/v0.10.11) - там просто бинарник сразу
-идет
+идет.
 
-Команда для подключения cli клиента
+Команда для подключения cli клиента:
 
 ```
 evans -r repl --host localhost --port 50051
@@ -62,7 +62,7 @@ evans -r repl --host localhost --port 50051
  call SearchByCoords
 ```
 
-Последние две команды запрашивают параметры интерактивно
+Последние две команды запрашивают параметры интерактивно:
 
 * **SearchByName**  name: string
 * **SearchByCoords** lat, long: float
