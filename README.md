@@ -38,8 +38,7 @@ go build -o main cmd/server/main.go
 
 ### Проверка, что все работает
 
-Для проверки можно поставить [evans](https://github.com/ktr0731/evans/releases/tag/v0.10.11) - там просто бинарник сразу
-идет.
+Для проверки можно поставить [evans](https://github.com/ktr0731/evans/releases/tag/v0.10.11).
 
 Команда для подключения cli клиента:
 
