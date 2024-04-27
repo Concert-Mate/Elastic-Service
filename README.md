@@ -8,8 +8,9 @@
 
 ---
 
-## Запуск Elastic
+## Запуск ElasticSearch
 
+### Запуск Elastic
 ```
 docker compose up -d
 ```
