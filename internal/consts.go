@@ -1,7 +1,7 @@
 package internal
 
 const (
-	elasticSearchAddress = "http://localhost:9200"
+	elasticSearchAddress = "ELASTICSEARCH_ADDRESS"
 	indexName            = "russian_cities1"
 	fileNameUrl          = "https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json"
 )
@@ -15,3 +15,5 @@ const (
 	defaultFuzziness = "AUTO"
 	geoDistance      = "ELASTIC_DISTANCE"
 )
+
+const DefaultPort = 50051

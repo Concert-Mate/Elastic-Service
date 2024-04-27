@@ -18,7 +18,7 @@ type ElasticsearchClient struct {
 
 func NewElasticsearchClient() (*ElasticsearchClient, error) {
 	cfg := elasticsearch.Config{
-		Addresses: []string{elasticSearchAddress},
+		Addresses: []string{os.Getenv(elasticSearchAddress)},
 		Username:  os.Getenv(elasticUsername),
 		Password:  os.Getenv(elasticPassword),
 	}
