@@ -14,6 +14,7 @@ const (
 const (
 	defaultFuzziness = "AUTO"
 	geoDistance      = "ELASTIC_DISTANCE"
+	defaultDistance  = "10km"
 )
 
 const DefaultPort = 50051

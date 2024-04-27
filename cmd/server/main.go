@@ -21,19 +21,15 @@ func main() {
 	}
 
 	// Get port from command-line argument or use default
-	port := internal.DefaultPort
+	defaultPort := strconv.Itoa(internal.DefaultPort)
 
-	if len(os.Args) > 1 {
-		portStr := os.Args[1]
-		if portStr != "" {
-			port, err = strconv.Atoi(portStr)
-			if err != nil {
-				log.Fatalf("Invalid port number: %s", portStr)
-			}
-		}
+	configuredPort := os.Getenv("PORT")
+	port := configuredPort
+	if configuredPort == "" {
+		port = defaultPort
 	}
 
-	lis, err := net.Listen("tcp", ":"+strconv.Itoa(port))
+	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
