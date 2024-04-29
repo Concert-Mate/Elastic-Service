@@ -3,7 +3,6 @@ package api
 import "errors"
 
 func NewCoords(lat, lon float32) (*Coords, error) {
-	// Validate latitude and longitude
 	if lat < -90 || lat > 90 {
 		return nil, errors.New("latitude out of range (-90 to 90 degrees)")
 	}

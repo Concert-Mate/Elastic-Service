@@ -10,12 +10,19 @@
 
 ## Запуск Сервиса
 
-### Запуск ElasticSearch
-```
+
+1. Запустить ElasticSearch
+```bash
 docker compose up -d
 ```
 
-## Запуск gRPC server
+2. Подождать некоторое время пока команда вида: 
+```bash
+curl -f -X GET 'ELASTICSEARCH_ADDRESS:9200/_cat/health?v' --user ELASTIC_USER:ELASTIC_PASSWORD
+```
+не выполнится успешно
+
+## 3. Запустить gRPC server
 
 * Для сборки необходим **GO** >= 1.19
 * Приложение по умолчанию запущено на порту 50051
