@@ -15,6 +15,7 @@ const (
 	defaultFuzziness = "AUTO"
 	geoDistance      = "ELASTIC_DISTANCE"
 	defaultDistance  = "10km"
+	defaultHost      = "http://localhost:9200"
 )
 
 const DefaultPort = 50051

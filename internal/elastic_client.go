@@ -17,8 +17,13 @@ type ElasticsearchClient struct {
 }
 
 func NewElasticsearchClient() (*ElasticsearchClient, error) {
+	host := os.Getenv(elasticSearchAddress)
+	if host == "" {
+		host = defaultHost
+	}
+
 	cfg := elasticsearch.Config{
-		Addresses: []string{os.Getenv(elasticSearchAddress)},
+		Addresses: []string{defaultHost},
 		Username:  os.Getenv(elasticUsername),
 		Password:  os.Getenv(elasticPassword),
 	}
