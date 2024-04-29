@@ -114,3 +114,8 @@ func TestConstructorValidation(t *testing.T) {
 	_, err := pb.NewCoords(1000, 2000)
 	assert.Error(t, err, "Expected error for invalid coords when create coords object by constructor")
 }
+
+func TestConstructorValidationNegative(t *testing.T) {
+	_, err := pb.NewCoords(-1, -1)
+	assert.Equal(t, err, nil)
+}

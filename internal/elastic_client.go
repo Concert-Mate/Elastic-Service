@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"github.com/elastic/go-elasticsearch/v8"
 	"io"
-	"log"
 	"os"
 	"strings"
 )
@@ -17,8 +16,13 @@ type ElasticsearchClient struct {
 }
 
 func NewElasticsearchClient() (*ElasticsearchClient, error) {
+	host := os.Getenv(elasticSearchAddress)
+	if host == "" {
+		host = defaultHost
+	}
+
 	cfg := elasticsearch.Config{
-		Addresses: []string{os.Getenv(elasticSearchAddress)},
+		Addresses: []string{defaultHost},
 		Username:  os.Getenv(elasticUsername),
 		Password:  os.Getenv(elasticPassword),
 	}
@@ -81,7 +85,6 @@ func (ec *ElasticsearchClient) SearchByCoords(coords *pb.Coords) ([]*pb.City, er
 		}
 	}`, distance, coords.GetLat(), coords.GetLon())
 
-	log.Printf("geo_distance: %s %f %f", distance, coords.GetLat(), coords.GetLon())
 	return ec.search(query)
 }
 
