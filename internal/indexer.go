@@ -7,6 +7,7 @@ import (
 	pb "elastic-service/pkg/api"
 	"encoding/json"
 	"fmt"
+	pgb "github.com/cheggaaa/pb/v3"
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 	"io"
 	"net/http"
@@ -108,14 +109,16 @@ func (ec *ElasticsearchClient) initCities() error {
 		return fmt.Errorf("error creating index: %s: %s", createIndexRes.Status(), body["error"].(map[string]interface{})["reason"])
 	}
 
+	bar := pgb.StartNew(len(cities))
 	// Index documents
 	for _, city := range cities {
 		err = ec.IndexDocument(indexName, city)
 		if err != nil {
 			panic(err)
 		}
+		bar.Increment()
 	}
-
+	bar.Finish()
 	return nil
 }
 
