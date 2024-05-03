@@ -8,9 +8,6 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
       - "xpack.security.enabled=true"
-      - "ELASTIC_USER=${ELASTIC_USER-elastic}"
-      - "ELASTIC_PASSWORD=${ELASTIC_PASSWORD-password1}"
-
 
     ulimits:
       memlock:

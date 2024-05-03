@@ -74,7 +74,6 @@ func (ec *ElasticsearchClient) initCities() error {
 		return err
 	}
 
-	// Define the mapping for the index
 	mapping := `{
         "mappings": {
             "properties": {
