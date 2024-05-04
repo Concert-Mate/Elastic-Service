@@ -29,7 +29,7 @@ func NewElasticsearchClient() (*ElasticsearchClient, error) {
 
 	// Initialize Elasticsearch configuration with timeout
 	cfg := elasticsearch.Config{
-		Addresses: []string{defaultHost},
+		Addresses: []string{host},
 		Username:  os.Getenv(elasticUsername),
 		Password:  os.Getenv(elasticPassword),
 		Transport: &http.Transport{

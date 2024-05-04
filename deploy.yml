@@ -24,13 +24,23 @@ services:
         max-file: "100"
     ports:
       - "9200:9200"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f -X GET 'localhost:9200/_cat/health?v' --user $ELASTIC_USER:$ELASTIC_PASSWORD | grep -q 'green'"]
+      interval: 1ms
+      timeout: 20s
+      retries: 10000
 
     env_file:
       - .env
-
-    elastic-service:
+  
+  elastic-service:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "50051:50051"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    env_file:
+      - .env
