@@ -24,10 +24,10 @@ jobs:
             git reset --hard
             git pull origin main
             cat << EOF > .env
-            ELASTIC_USER=elastic
-            ELASTIC_PASSWORD=password
-            PORT=50051
-            ELASTIC_DISTANCE=10km
-            ELASTICSEARCH_ADDRESS=http://elasticsearch:9200
+            ELASTIC_USER=${{ secrets.ELASTIC_USER }}
+            ELASTIC_PASSWORD=${{ secrets.ELASTIC_PASSWORD }}
+            PORT=${{ secrets.ELASTIC_SERVICE_PORT }}
+            ELASTIC_DISTANCE=${{ secrets.ELASTIC_DISTANCE }}
+            ELASTICSEARCH_ADDRESS=${{ secrets.ELASTICSEARCH_ADDRESS }}
             EOF
             docker compose -f deploy.yml up --build -d --force-recreate
