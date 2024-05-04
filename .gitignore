@@ -8,3 +8,4 @@ build/
 **/blob.go
 .idea
 go.sum
+main
