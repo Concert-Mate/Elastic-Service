@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          debug: true
+          script: |
+            whoami
+            cd ~/Elastic-Service
+            git reset --hard
+            git pull origin main
+            cat << EOF > .env
+            ELASTIC_USER=elastic
+            ELASTIC_PASSWORD=password
+            PORT=50051
+            ELASTIC_DISTANCE=10km
+            ELASTICSEARCH_ADDRESS=http://elasticsearch:9200
+            EOF
+            docker compose -f deploy.yml up --build -d --force-recreate
