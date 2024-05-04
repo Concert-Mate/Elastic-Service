@@ -20,5 +20,4 @@ COPY --from=builder /app/.env .
 
 EXPOSE 50051
 
-#CMD ["./main"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["./main"]
