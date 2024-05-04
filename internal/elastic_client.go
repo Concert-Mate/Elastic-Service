@@ -7,8 +7,11 @@ import (
 	"fmt"
 	"github.com/elastic/go-elasticsearch/v8"
 	"io"
+	"net"
+	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 type ElasticsearchClient struct {
@@ -21,11 +24,24 @@ func NewElasticsearchClient() (*ElasticsearchClient, error) {
 		host = defaultHost
 	}
 
+	_, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	// Initialize Elasticsearch configuration with timeout
 	cfg := elasticsearch.Config{
 		Addresses: []string{defaultHost},
 		Username:  os.Getenv(elasticUsername),
 		Password:  os.Getenv(elasticPassword),
+		Transport: &http.Transport{
+			MaxIdleConnsPerHost:   10,
+			ResponseHeaderTimeout: 5 * time.Second,
+			DialContext: (&net.Dialer{
+				Timeout:   1 * time.Second,
+				KeepAlive: 30 * time.Second,
+			}).DialContext,
+		},
 	}
+
 	es, err := elasticsearch.NewClient(cfg)
 	if err != nil {
 		return nil, err

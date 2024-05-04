@@ -2,7 +2,7 @@ package internal
 
 const (
 	elasticSearchAddress = "ELASTICSEARCH_ADDRESS"
-	indexName            = "russian_cities1"
+	indexName            = "russian_cities"
 	fileNameUrl          = "https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json"
 )
 
