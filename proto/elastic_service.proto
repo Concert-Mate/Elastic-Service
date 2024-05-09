@@ -39,8 +39,6 @@ message CitySearchCoordsResponse{
   repeated City options = 2;
 }
 
-
-
 message CityNameRequest {
   string name = 1;
 }
