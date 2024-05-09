@@ -48,6 +48,7 @@ message CityNameRequest {
 message CoordsRequest {
   float lat = 1;
   float lon = 2;
+  optional string radius = 3;
 }
 
 

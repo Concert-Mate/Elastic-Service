@@ -3,7 +3,7 @@ package main
 import (
 	"elastic-service/internal"
 	"elastic-service/internal/handlers"
-	pb "elastic-service/pkg/api" // Import generated proto package
+	pb "elastic-service/pkg/api"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -20,7 +20,6 @@ func main() {
 		return
 	}
 
-	// Get port from command-line argument or use default
 	defaultPort := strconv.Itoa(internal.DefaultPort)
 
 	configuredPort := os.Getenv("PORT")
