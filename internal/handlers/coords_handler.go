@@ -10,6 +10,7 @@ func (s *Server) SearchByCoords(ctx context.Context, req *pb.CoordsRequest) (*pb
 
 	lat := req.GetLat()
 	lon := req.GetLon()
+	radius := req.GetRadius()
 
 	coords, err := pb.NewCoords(lat, lon)
 	if err != nil {
@@ -17,7 +18,7 @@ func (s *Server) SearchByCoords(ctx context.Context, req *pb.CoordsRequest) (*pb
 		return response, nil
 	}
 
-	cities, err := s.client.SearchByCoords(coords)
+	cities, err := s.client.SearchByCoords(coords, radius)
 	if err != nil {
 		response.Code = pb.CitySearchCoordsResponse_INTERNAL_ERROR_COORDS
 		return response, nil

@@ -78,7 +78,7 @@ func TestSearchMoscowByCoords(t *testing.T) {
 		Lon: 37.617777777778,
 	}
 
-	cities, err := ecClient.SearchByCoords(moscowCoords)
+	cities, err := ecClient.SearchByCoords(moscowCoords, defaultDistance)
 	assert.NoError(t, err, "Search by coords failed")
 	assert.NotEmpty(t, cities, "Expected at least one city, got none")
 
@@ -105,7 +105,7 @@ func TestSearchByNonExistentCoords(t *testing.T) {
 		Lon: 1000.0,
 	}
 
-	cities, err := ecClient.SearchByCoords(nonExistentCoords)
+	cities, err := ecClient.SearchByCoords(nonExistentCoords, defaultDistance)
 	assert.NoError(t, err, "Search by non-existent coordinates failed")
 	assert.Empty(t, cities, "Expected empty result for non-existent coordinates")
 }

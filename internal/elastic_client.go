@@ -73,11 +73,15 @@ func (ec *ElasticsearchClient) SearchByName(name string) ([]*pb.City, error) {
 }
 
 // SearchByCoords searches for a city by coordinates
-func (ec *ElasticsearchClient) SearchByCoords(coords *pb.Coords) ([]*pb.City, error) {
+func (ec *ElasticsearchClient) SearchByCoords(coords *pb.Coords, radius string) ([]*pb.City, error) {
 	distance := os.Getenv(geoDistance)
 
 	if distance == "" {
 		distance = defaultDistance
+	}
+
+	if radius != "" {
+		distance = radius
 	}
 
 	query := fmt.Sprintf(`{

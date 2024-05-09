@@ -39,8 +39,6 @@ message CitySearchCoordsResponse{
   repeated City options = 2;
 }
 
-
-
 message CityNameRequest {
   string name = 1;
 }
@@ -48,6 +46,7 @@ message CityNameRequest {
 message CoordsRequest {
   float lat = 1;
   float lon = 2;
+  optional string radius = 3;
 }
 
 
